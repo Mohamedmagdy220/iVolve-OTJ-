@@ -57,7 +57,7 @@ Add the following line to run the script every day at 5:00 PM:
 0 17 * * * /mysql_backup.sh
 ```
 
-✅ Output
+## ✅ Output
 
 Backups will be saved in the following format:
 
@@ -65,6 +65,6 @@ Backups will be saved in the following format:
 ~/mysql_backups/MySQL_backup_YYYY-MM-DD.sql
 ```
 
-🛠️ Author
+## 🛠️ Author
 
 Prepared by: Mohamed Magdy
