@@ -1,0 +1,25 @@
+- name: Configure Nginx Web Server
+  hosts: webservers
+  become: yes
+
+  tasks:
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Customize index.html
+      copy:
+        content: "<h1>Welcome to My Ansible Deployed Web Server</h1>"
+        dest: /var/www/html/index.nginx-debian.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+    - name: Ensure Nginx is running and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes

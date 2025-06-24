@@ -1,0 +1,4 @@
+---
+# vars file for jenkins
+
+jenkins_dir: /opt/jenkins
