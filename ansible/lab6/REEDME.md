@@ -15,6 +15,7 @@ The project is organized into 3 main roles:
 2. **kubectl role**: Responsible for downloading and installing the Kubernetes CLI tool (kubectl).
 3. **jenkins role**: Responsible for installing Java and Jenkins, and managing the service.
 
+```
 ansible-roles/
 ├── deploy.yml
 ├── inventory
@@ -30,7 +31,7 @@ ansible-roles/
 │      └── main.yml
 │    └── vars/
 │      └── main.yml
-
+```
 
 ## Usage Steps
 
