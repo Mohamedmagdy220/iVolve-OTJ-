@@ -1,0 +1,60 @@
+---
+# tasks file for jenkins
+
+    - name: Install Java 17
+      apt:
+        name: openjdk-17-jdk
+        state: present
+        update_cache: yes
+
+    - name: Create Jenkins directory
+      file:
+        path: "{{ jenkins_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: Download jenkins.war
+      get_url:
+        url: https://get.jenkins.io/war-stable/latest/jenkins.war
+        dest: "{{ jenkins_dir }}/jenkins.war"
+        mode: '0755'
+
+    - name: Create systemd service for Jenkins (Java 17)
+      copy:
+        dest: /etc/systemd/system/jenkins-custom.service
+        content: |
+          [Unit]
+          Description=Jenkins (manual run from jenkins.war with Java 17)
+          After=network.target
+
+          [Service]
+          Type=simple
+          User=root
+          ExecStart=/usr/bin/java -jar {{ jenkins_dir }}/jenkins.war
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Reload systemd
+      command: systemctl daemon-reexec
+
+    - name: Enable and start Jenkins (custom service)
+      systemd:
+        name: jenkins-custom
+        enabled: yes
+        state: started
+
+    - name: Wait for Jenkins to generate admin password
+      wait_for:
+        path: /root/.jenkins/secrets/initialAdminPassword
+        timeout: 120
+
+    - name: Show Jenkins initial admin password
+      command: cat /root/.jenkins/secrets/initialAdminPassword
+      register: jenkins_pass
+      changed_when: false
+
+    - name: Print Jenkins admin password
+      debug:
+        msg: "🔐 Access Jenkins at http://<your_ip>:8080 — Admin password: {{ jenkins_pass.stdout }}"

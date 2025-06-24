@@ -1,0 +1,2 @@
+[webservers]
+192.168.88.130 ansible_user=magdy
