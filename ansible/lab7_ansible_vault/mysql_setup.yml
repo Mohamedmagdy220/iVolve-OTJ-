@@ -1,0 +1,61 @@
+---
+- name: Clean MySQL Setup and iVolve DB Creation
+  hosts: all
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+
+    - name: Install required packages
+      apt:
+        name:
+          - mysql-server
+          - python3-pip
+        state: present
+        update_cache: yes
+
+    - name: Install PyMySQL (needed by Ansible MySQL modules)
+      pip:
+        name: PyMySQL
+        executable: pip3
+
+    - name: Start and enable MySQL
+      service:
+        name: mysql
+        state: started
+        enabled: true
+
+    - name: Set root password and enable mysql_native_password
+      mysql_user:
+        name: root
+        host: localhost
+        password: "{{ root_pass }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        priv: '*.*:ALL,GRANT'
+        state: present
+
+    - name: Create iVolve database
+      community.mysql.mysql_db:
+        name: iVolve
+        state: present
+        login_user: root
+        login_password: "{{ root_pass }}"
+
+    - name: Create new database user with full privileges
+      community.mysql.mysql_user:
+        name: "{{ db_user }}"
+        password: "{{ db_pass }}"
+        priv: "iVolve.*:ALL"
+        host: "%"
+        state: present
+        login_user: root
+        login_password: "{{ root_pass }}"
+
+    - name: Verify connection by listing databases
+      shell: mysql -u {{ db_user }} -p{{ db_pass }} -e "SHOW DATABASES;"
+      register: result
+
+    - name: Print DB list
+      debug:
+        var: result.stdout_lines
