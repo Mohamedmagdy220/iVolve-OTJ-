@@ -77,14 +77,15 @@ Make sure the IAM user has permission for:
 - `ec2:DescribeInstances`
 - `ec2:DescribeTags`
 
-### 6 Test dynamic inventory
+### 5 Test dynamic inventory
 
 ```bash
 ansible-inventory -i inventory/aws_ec2.yaml --list
 ```
 
-You should see your EC2 instance(s) listed under the tag group `tag_Name_ivolve`.
+You should see your EC2 instance(s) listed under the tag group `tag_Name_ivolve` like this.
 
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/ansible/lab8/images/list%20ec2%20with%20filter%20ivolve.png)
 ---
 
 ## 🛠️ ansible.cfg Configuration
