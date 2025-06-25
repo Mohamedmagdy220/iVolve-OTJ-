@@ -24,6 +24,8 @@ This Ansible playbook automates the full installation and secure configuration o
 
 ```bash
 project/
+├── ancible.cfg             # configuration file for verfying the inventory 
+├── iinventory              # special inventory for hosts
 ├── mysql_setup.yml        # Main playbook
 ├── vars.yml               # Encrypted file containing DB credentials (via Ansible Vault)
 ├── README.md              # Project documentation
@@ -56,6 +58,10 @@ ansible-galaxy collection install community.mysql
 ```bash
 ansible-vault create vars.yml
 ``` 
+3. Add your managed node(s) to the inventory filelike this:
+
+[webservers]
+192.168.88.130 ansible_user=magdy
 
 3. Run the playbook
    
