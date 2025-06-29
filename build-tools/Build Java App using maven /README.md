@@ -30,7 +30,8 @@ mvn -v
 
 ### Expected output:
 
-
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20maven%20/images/maven%20version.png)
+---
 
 ## 📥 Step 2: Clone the Application Repository
 
@@ -47,8 +48,8 @@ mvn test
 
 ### Successful output should show:
 
-
-
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20maven%20/images/maven%20test.png)
+---
 
 ## 🏗️ Step 4: Build the Application
 
@@ -61,6 +62,8 @@ mvn package
 ```bash
 target/hello-ivolve-1.0-SNAPSHOT.jar
 ```
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20maven%20/images/maven%20build.png)
+---
 
 ## ▶️ Step 5: Run the Application
 
@@ -70,7 +73,8 @@ java -jar target/hello-ivolve-1.0-SNAPSHOT.jar
 
 ### Expected output in the terminal:
 
-
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20maven%20/images/maven%20run.png)
+---
 
 ## 👨‍💻 Author
 Mohamed Magdy
