@@ -47,6 +47,10 @@ source /etc/profile.d/gradle.sh
 ```bash
 gradle -v
 ```
+
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20Gradle%20/images/gradle%20version.png)
+---
+
 ## 📦 Step 2: Clone the Application Repository
 
 ```bash
@@ -60,7 +64,8 @@ gradle test
 ```
 ### Check the test output to ensure all tests pass like this :
 
-
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20Gradle%20/images/gradle%20test.png)
+---
 
 ## 🧱 Step 4: Build the Application
 
@@ -73,22 +78,27 @@ gradle build
 ```bash
 build/libs/ivolve-app.jar
 ```
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20Gradle%20/images/gradle%20build.png)
+---
 
 ## ▶️ Step 5: Run the Application
 
 ```bash
 java -jar build/libs/ivolve-app.jar
 ```
-
-## ✅ Step 6: Verify the Output
-
 ### Expected console output:
 
 ```bash
 Hello iVolve Trainee
 ```
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/build-tools/Build%20Java%20App%20using%20Gradle%20/images/gradle%20run.png)
+---
 
 ## 💡 Notes
 
 - You can change Gradle versions by updating the download link and symbolic link in /opt/gradle.
 - This app is a minimal demo and can be extended with Spring Boot, REST APIs, etc.
+
+## 👨‍💻 Author
+Mohamed Magdy
+🎓 DevOps Trainee at iVolve
