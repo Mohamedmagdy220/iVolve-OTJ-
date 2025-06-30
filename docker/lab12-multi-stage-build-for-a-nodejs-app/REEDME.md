@@ -97,6 +97,11 @@ curl localhost:8080
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab12-multi-stage-build-for-a-nodejs-app/test%20multi-stage%20container.png)
 ---
 
+## final size of images :
+
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab12-multi-stage-build-for-a-nodejs-app/images.png)
+---
+
 ## 🧠 Notes
 
 - This method ensures **smaller image size** and better separation of concerns.
