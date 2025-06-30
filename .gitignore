@@ -1,3 +1,4 @@
-build-tools/build1
-build-tools/build2
+**/target/
+**/pom.xml
+**/src/
 
