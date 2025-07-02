@@ -62,7 +62,7 @@ trivy image --format json -o trivy-report.json my-app:latest
 ## 📚 Resources
 
 - Trivy Documentation: https://trivy.dev
-- DockerHub: https://hub.docker.com
+- DockerHub: https://hub.docker.com/repository/docker/mohamed2200/my-app/general
 - Project Code: https://github.com/Ibrahim-Adel15/Docker-1
 
 ## 👨‍💻 Author
