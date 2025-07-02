@@ -56,6 +56,20 @@ trivy image --format json -o trivy-report.json my-app:latest
 
 ### ☁️ Step 6: Push Image to DockerHub
 
+#### 1. Login to DockerHub:
+```bash
+docker login
+```
+#### 2. Tag the image with your DockerHub username:
+
+```bash
+docker tag my-app:latest yourusername/my-app:latest
+```
+#### 3. Push the image:
+```bash
+docker push yourusername/my-app:latest
+```
+
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab17-Scan-docker-image-with-trivy/docker%20hub.png)
 ---
 
