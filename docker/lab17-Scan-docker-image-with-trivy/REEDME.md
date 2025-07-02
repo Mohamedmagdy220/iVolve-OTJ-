@@ -24,7 +24,7 @@ cd Docker-1
 ### 📝 Step 2: Create Dockerfile
 ### Here is the complete Dockerfile used in this project:
 
-![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab17-Scan-docker-image-with-trivy/Dockerfile)
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab17-Scan-docker-image-with-trivy/docker%20file.png)
 ---
 
 ### 🛠️ Step 3: Build Docker Image
