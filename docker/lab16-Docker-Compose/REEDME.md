@@ -34,21 +34,35 @@ POSTGRES_DB=postgres
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab16-Docker-Compose/docker%20compose%20file.png)
 ---
 
-### 3. 🐳 Build and Run the App
+### 4. 🐳 Build and Run the App
 
 ```bash
 docker-compose up --build
 ```
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab16-Docker-Compose/docker%20compose%20up.png)
 ---
+#### list my networks
+```bash
+docker network ls
+```
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab16-Docker-Compose/networks.png)
+---
 
-### 3. 🐳 test connection
+#### list my volumes
+```bash
+docker volume ls
+```
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab16-Docker-Compose/volume.png)
+---
+
+### 5. 🐳 test connection
 
 ```bash
 curi localhost:3000
 ```
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab16-Docker-Compose/test.png)
 ---
+
 
 ## 🧹 Clean Up
 
