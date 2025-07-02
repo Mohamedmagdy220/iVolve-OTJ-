@@ -37,7 +37,7 @@ POSTGRES_DB=postgres
 ### 4. 🐳 Build and Run the App
 
 ```bash
-docker-compose up --build
+docker-compose up --build -d
 ```
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab16-Docker-Compose/docker%20compose%20up.png)
 ---
@@ -58,7 +58,7 @@ docker volume ls
 ### 5. 🐳 test connection
 
 ```bash
-curi localhost:3000
+curl localhost:3000
 ```
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/docker/lab16-Docker-Compose/test.png)
 ---
