@@ -57,7 +57,7 @@ kubectl get pvc
 ## 🚀 Step 4: Deploy a Test Pod
 Create `test-pod.yaml` like this:
 
-![image]()
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/k8s/lab22-persistant-storage-setuo-for-app-logging/images/test%20pod.png)
 ---
 
 ## Bouns
@@ -86,7 +86,8 @@ ssh worker1
 cat /mnt/app-logs/app.log
 ```
 
-✅ Expected output:
+### ✅ Expected output:
+
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/k8s/lab22-persistant-storage-setuo-for-app-logging/images/cat%20log%20on%20worker1.png)
 ---
 
