@@ -7,7 +7,7 @@ This guide provides a professional setup for persistent storage in Kubernetes to
 - A running Kubernetes cluster (Minikube, K3s, EKS, etc.).
 - kubectl configured to access the cluster.
 - SSH access to worker nodes (if using hostPath).
-
+- in this lab i used (1vm for master node , 2vms for worker nodes)
 
 ## 📂 Step 1: Prepare the Host Directory
 On the two worker nodes where logs will be stored:
