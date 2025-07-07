@@ -26,35 +26,16 @@ kubernets-app/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/lbrahim-Adel15/kubernets-app.git
+git clone https://github.com/Mohamedmagdy220/kubernets-app.git
 cd kubernets-app
 ```
-
-### 2. Create docker-compose.yml file
-
-Create a file named docker-compose.yml with the following content:
+### 2. Create .env file
 ```bash
-services:
-  app:
-    build: .
-    ports:
-      - "3000:3000"
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-    depends_on:
-      - db
-
-  db:
-    image: mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE} 
-    volumes:
-      - db_data:/var/lib/mysql
-volumes:
-  db_data:
+DB_HOST=db
+DB_USER=root
+DB_PASSWORD=root
+MYSQL_ROOT_PASSWORD=root
+MYSQL_DATABASE=ivolve
 ```
 
 ### 3. Build and run the containers
