@@ -10,14 +10,14 @@ This lab demonstrates how Kubernetes taints can be used to restrict pod scheduli
 ✅ Apply taints to three nodes with different workload types:
 - workload=master:NoSchedule
 - workload=app:NoSchedule
-- workload=database:NoSchedule
+- workload=database:NoSchedule.
 ✅ Verify taints are correctly configured.
 
 
 ## ⚙️ Prerequisites
-✔ A 3-node Kubernetes cluster (Minikube, Kubeadm, EKS, etc.)
-✔ kubectl configured with admin access
-✔ Basic understanding of Kubernetes nodes and pods
+✔ A 3-node Kubernetes cluster (Minikube, Kubeadm, EKS, etc.).
+✔ kubectl configured with admin access.
+✔ Basic understanding of Kubernetes nodes and pods.
 
 
 ## 🔧 Step-by-Step Lab Guide
