@@ -29,7 +29,7 @@ Check your cluster nodes before applying taints:
 kubectl get nodes
 ```
 
-![image]()
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/k8s/lab19-node-isolation-using-taints/get%20nodes.png)
 ---
 
 ### 2️⃣ Apply Taints
@@ -55,7 +55,7 @@ kubectl taint nodes node3 workload=database:NoSchedule
 ```bash
 kubectl describe nodes | grep Taints
 ```
-![image]()
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/k8s/lab19-node-isolation-using-taints/grep%20taints.png)
 ---
 
 ## 🧹 Cleanup
