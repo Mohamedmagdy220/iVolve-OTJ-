@@ -1,7 +1,5 @@
 # Kubernetes ConfigMaps and Secrets Management
 
-![Kubernetes Logo](https://kubernetes.io/images/favicon.png)
-
 ## 📌 Overview
 This project demonstrates secure configuration management in Kubernetes using ConfigMaps for non-sensitive data and Secrets for sensitive information, following Kubernetes best practices.
 
