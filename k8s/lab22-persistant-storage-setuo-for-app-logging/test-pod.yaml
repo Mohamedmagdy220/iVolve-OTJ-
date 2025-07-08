@@ -18,5 +18,5 @@ spec:
   tolerations:
     - key: "workload"
       operator: "Equal"
-      value: "app"  # تطابق Taint الموجود على عقدة app
+      value: "app"  
       effect: "NoSchedule"
