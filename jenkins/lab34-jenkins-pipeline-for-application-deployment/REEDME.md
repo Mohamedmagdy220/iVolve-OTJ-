@@ -65,6 +65,8 @@ and you can see my jenkins file by click here :
 
 Ensure you have the `Dockerfile` ready to build the app using a JAR file. (already included).
 
+[dockerfile](https://github.com/Mohamedmagdy220/Jenkins_App/blob/main/Dockerfile)
+
 ### 4️⃣ Create Kubernetes deployment YAML
 
 Check the file `k8s/deployment.yaml`. This is used to deploy the image to Kubernetes.
