@@ -58,9 +58,8 @@ cd Jenkins_App
 
 Make sure `Jenkinsfile` exists in the root directory (already included here).
 and you can see my jenkins file by click here :
-`
-https://github.com/Mohamedmagdy220/Jenkins_App/blob/main/Jenkinsfile
-`
+
+[jenkkinsfile](https://github.com/Mohamedmagdy220/Jenkins_App/blob/main/Jenkinsfile)
 
 ### 3️⃣ Setup Dockerfile
 
@@ -124,9 +123,8 @@ kubectl get deployments
 ---
 
 And you can see my image in docker hub by click here :
-`
-https://hub.docker.com/repository/docker/mohamed2200/jenkins-app/general
-`
+
+[my docker hub](https://hub.docker.com/repository/docker/mohamed2200/jenkins-app/general)
 
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab34-jenkins-pipeline-for-application-deployment/images/image%20in%20docker%20hub.png)
 ---
