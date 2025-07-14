@@ -41,7 +41,7 @@ This lab demonstrates how to implement **Role-Based Access Control (RBAC)** in J
    - `user1` with a password and email
    - `user2` with a password and email
 
-![image]()
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab33-role-based-authorization/images/users.png)
 ---
 
 ## 🧾 Step 4: Define Roles
@@ -54,7 +54,7 @@ This lab demonstrates how to implement **Role-Based Access Control (RBAC)** in J
      - `Job → Read`
 3. Save changes
 
-![image]()
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab33-role-based-authorization/images/global%20roles.png)
 ---
 
 ## 📌 Step 5: Assign Roles to Users
@@ -65,13 +65,15 @@ This lab demonstrates how to implement **Role-Based Access Control (RBAC)** in J
    - `read-only` role to `user2`
 3. Save the configuration
 
-![image]()
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab33-role-based-authorization/images/assign%20roles.png)
 ---
 
 ## ✅ Verification
 
-- Log in as `ivolve-1`: You should have full admin access
-- Log in as `ivolve-2`: You should only be able to view jobs, not modify them
-
+- Log in as `ivolve-1`: You should have full admin access and has the right to insert a new item and run the pipeline:
+![ivolve-1](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab33-role-based-authorization/images/user-1.png)
+---
+- Log in as `ivolve-2`: You should only be able to view jobs, not modify them:
+![ivolve-2](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab33-role-based-authorization/images/user-2.png)
 ---
 
