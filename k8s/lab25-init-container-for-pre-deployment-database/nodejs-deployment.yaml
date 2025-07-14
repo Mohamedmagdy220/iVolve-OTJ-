@@ -1,0 +1,75 @@
+# nodejs-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      tolerations:
+      - key: "workload"
+        operator: "Equal"
+        value: "app"
+        effect: "NoSchedule"
+
+      initContainers:
+      - name: db-init
+        image: bitnami/mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-pass   # secret موجود من Lab 23
+              key: password
+        command:
+        - sh
+        - -c
+        - |
+          echo "Waiting for MySQL to be ready..."
+          for i in {1..10}; do
+             mysql -h mysql.default.svc.cluster.local -u root -p$MYSQL_ROOT_PASSWORD -e "SELECT 1;" && break
+             echo "MySQL not ready, retrying..."
+             sleep 10
+          done          
+          mysql -h mysql.default.svc.cluster.local -u root -p$MYSQL_ROOT_PASSWORD -e " 
+            CREATE DATABASE IF NOT EXISTS involve;
+            CREATE USER IF NOT EXISTS 'magdy'@'%' IDENTIFIED BY 'pass';
+            GRANT ALL PRIVILEGES ON involve.* TO 'magdy'@'%';
+            FLUSH PRIVILEGES;"
+
+      containers:
+      - name: nodejs
+        image: mohamed2200/kubernetes-nodejs-app:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: host
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
+        volumeMounts:
+        - name: app-pv
+          mountPath: /app/data
+
+      volumes:
+      - name: app-pv
+        persistentVolumeClaim:
+          claimName: nodejs-pvc
