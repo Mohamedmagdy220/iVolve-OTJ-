@@ -74,21 +74,59 @@ jenkins-shared-library/
 git clone https://github.com/Moahmedmagdy220/Jenkins_App2.git
 cd Jenkins_App
 ```
-### 🔹 Step 2: Add SSH credentials in Jenkins
+### 🔹 Step 2: Setup Agent vm:
+
+#### 1- install Prerequisites on the Agent VM:
+Make sure the VM (agent) has:
+
+- [x] Java installed (java -version must work)
+  you can install it with yhis command:
+  ```bash
+   sudo yum install java
+  ```
+- [x] Network access to the Jenkins controller (in this repo : port 22 for SSH)
+- [x] SSH access (if using SSH connection) 
+
+#### 2- Generate an SSH Key 
+generate new keys in Jenkins Master VM:
+```bash
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/jenkins_agent_key
+```
+You’ll get in `~/.ssh/`:
+```
+jenkins_agent_key (private key)
+jenkins_agent_key.pub (public key)
+```
+sent public key into the Agent VM:
+```bash
+ssh-copy-id -i ~/.ssh/jenkins_agent_key.pub magdy@192.168.80.128
+```
+test the ssh connectivity:
+```bash
+ssh -i ~/.ssh/jenkins_agent_key magdy@192.168.80.128
+```
+#### 3- Create Agent root home directory
+On Agent VM
+```bash
+sudo mkdir /home/jenkins_home
+sudo chmod 777 /home/jenkins_home
+```
+
+### 4- Add SSH credentials in Jenkins
 
 - Go to: `Manage Jenkins > Credentials > Global`
 - Add: `SSH Username with private key`
 - Username: `magdy`
 - Private key: `Paste content of private key`
 
-### 🔹 Step 3: Setup DockerHub Credentials in Jenkins
+### 5- Setup DockerHub Credentials in Jenkins 
 - Go to: `Manage Jenkins > Credentials > Global`
 - Add: `Username with password`
 - ID: `docker-hub-creds`
   
 ![credentials](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/two%20credentials%20.png)
 ---
-### 🔹 Step 4: Setup Jenkins Agent
+### 6- Setup Jenkins Agent
 - Go to `Manage Jenkins > Nodes > New Node`
 - Create a Permanent Agent:
   - Name: `agent-vm-1`
@@ -97,19 +135,23 @@ cd Jenkins_App
   - Use SSH to connect
 - Add SSH credentials
 
-![agent-node](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/online%20agent.png)
----
 ![agent-node](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/nodes%20in%20jenkins.png)
 ---
+#### 7- Test Connection:
+Make sure the agent is online from the logs
 
-### 🔹 Step 5: Install Requirements on Agent
+![agent-node](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/online%20agent.png)
+---
+
+
+### 8- Install required packages on Agent
 ```bash
 sudo apt update && sudo apt install git docker.io maven -y
 sudo usermod -aG docker <agent-user>
 sudo reboot
 ```
 
-### 🔹 Step 6: Create Shared Library Repo Structure
+### 🔹 Step 3: Create Shared Library Repo Structure
 ```bash
 mkdir -p jenkins-shared-library/vars
 # Add the following .groovy files under vars/
@@ -188,7 +230,7 @@ git clone https://github.com/Mohamedmagdy220/jenkins-shared-lib.git
 cd vars
 ```
 ---
-### 🔹 Step 7: Register Shared Library in Jenkins
+### 🔹 Step 4: Register Shared Library in Jenkins
 - GO to `Manage Jenkins > Configure System > Global Pipeline Libraries`
 - Name: `my-lib`
 - SCM: `Git`
@@ -196,7 +238,7 @@ cd vars
 
 ![library in jenkins](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/configuration%20of%20library%20in%20jenkins.png)
 ---
-### 🔹 Step 8: Jenkinsfile in Project Root
+### 🔹 Step 5: Jenkinsfile in Project Root
 Make sure `Jenkinsfile` exists in the root directory (already included here).
 ```
 @Library('my-lib') _  
@@ -236,7 +278,7 @@ environment {
 ```
 ---
 
-### 🔹 Step 9: Dockerfile
+### 🔹 Step 6: Dockerfile
 Ensure you have the `Dockerfile` ready to build the app using a JAR file. (already included).
 
 ```
@@ -256,7 +298,7 @@ EXPOSE 8080
 ---
 
 
-### 🔹 Step 10: Kubernetes Deployment YAML (`k8s/deployment.yaml`)
+### 🔹 Step 7: Kubernetes Deployment YAML (`k8s/deployment.yaml`)
 
 Check the file `k8s/deployment.yaml`. This is used to deploy the image to Kubernetes.
 
@@ -265,7 +307,7 @@ Check the file `k8s/deployment.yaml`. This is used to deploy the image to Kubern
 
 ✅ After completing all steps, run the pipeline from Jenkins and watch each stage execute!
 
-### 6️⃣ Create a Jenkins Pipeline Job
+### 🔹 Step 8: Create a Jenkins Pipeline Job
 
 - New Item → Type: **Pipeline**
 - Select: **Pipeline from SCM**
@@ -276,7 +318,7 @@ Check the file `k8s/deployment.yaml`. This is used to deploy the image to Kubern
 ![create pipeline](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/view%20pipelines.png)
 ---
 
-### 7️⃣ Run the Pipeline
+### 🔹 Step 9: Run the Pipeline
 
 Click **Build Now** and Jenkins will:
 
@@ -293,7 +335,7 @@ Click **Build Now** and Jenkins will:
 ![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/pipeline%20success.png)
 ---
 
-### 8️⃣ Check the Deployment
+### 🔹 Step 10: Check the Deployment
 
 ```bash
 kubectl get pods
