@@ -53,9 +53,9 @@ Jenkins_App/
 ├── Dockerfile
 ├── pom.xml
 ├── src/
-├── Jenkinsfile     ✅ هنضيفه
+├── Jenkinsfile     
 └── k8s/
-    └── deployment.yaml  ✅ هنضيفه
+    └── deployment.yaml  
 jenkins-shared-library/
 └── vars/
     ├── runUnitTest.groovy
