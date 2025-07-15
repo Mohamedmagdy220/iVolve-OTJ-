@@ -125,10 +125,63 @@ jenkins-shared-library/
     ├── removeImageLocally.groovy
     └── deployOnK8s.groovy
 ```
-as shown earlier.
-and you can see my files by click here :
-[library files](https://github.com/Mohamedmagdy220/jenkins-shared-lib/tree/main/vars)
----
+and the files contain:
+
+#### 🧪 runUnitTest.groovy
+```groovy
+def call() {
+    echo "Running unit tests..."
+    sh "pytest tests/"  // لو المشروع Python، غيّره حسب لغتك
+}
+```
+
+#### ⚙️ buildApp.groovy
+
+```groovy
+def call() {
+    echo "Building application..."
+    sh "python setup.py build"  // أو mvn clean install لو Java
+}
+```
+#### 🐳 buildImage.groovy
+
+```groovy
+def call() {
+    echo "Building Docker image..."
+    sh "docker build -t your-image-name:latest ."
+}
+```
+#### 🔍 scanImage.groovy
+```groovy
+def call() {
+    echo "Scanning Docker image..."
+    sh "trivy image your-image-name:latest"  // أو snyk أو غيره
+}
+```
+
+#### ☁️ pushImage.groovy
+```groovy
+def call() {
+    echo "Pushing Docker image..."
+    sh "docker push your-image-name:latest"
+}
+```
+#### 🧹 removeImageLocally.groovy
+```groovy
+def call() {
+    echo "Removing local Docker image..."
+    sh "docker rmi your-image-name:latest"
+}
+```
+
+#### 🚀 deployOnK8s.groovy
+```groovy
+def call() {
+    echo "Deploying on Kubernetes..."
+    sh "kubectl apply -f k8s/deployment.yaml"
+}
+```
+
 and you can clone it from :
 ```bash
 git clone https://github.com/Mohamedmagdy220/jenkins-shared-lib.git
@@ -145,15 +198,61 @@ cd vars
 ---
 ### 🔹 Step 8: Jenkinsfile in Project Root
 Make sure `Jenkinsfile` exists in the root directory (already included here).
-and you can see my jenkins file by click here :
+```
+@Library('my-lib') _  
 
-[jenkkinsfile](https://github.com/Mohamedmagdy220/Jenkins_App2/blob/main/Jenkinsfile)
+pipeline {
+    agent { label 'worker-1' }
+
+environment {
+    IMAGE_NAME = 'mohamed2200/jenkins-app'
+    IMAGE_TAG  = 'latest'
+    }
+
+    stages {
+        stage('Run Unit Tests') {
+            steps { runUnitTest() }
+        }
+        stage('Build Application') {
+            steps { buildApp() }
+        }
+        stage('Build Docker Image') {
+            steps { buildImage() }
+        }
+        stage('Scan Docker Image') {
+            steps { scanImage() }
+        }
+        stage('Push Docker Image') {
+            steps { pushImage() }
+        }
+        stage('Remove Local Image') {
+            steps { removeImageLocally() }
+        }
+        stage('Deploy on K8s') {
+            steps { deployOnK8s() }
+        }
+    }
+}
+```
 ---
 
 ### 🔹 Step 9: Dockerfile
 Ensure you have the `Dockerfile` ready to build the app using a JAR file. (already included).
 
-[dockerfile](https://github.com/Mohamedmagdy220/Jenkins_App2/blob/main/Dockerfile)
+```
+FROM maven:sapmachine 
+
+# Set working directory in container
+WORKDIR /app
+
+# Copy JAR file
+COPY target/demo-0.0.1-SNAPSHOT.jar .
+
+# Run the application
+CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
+
+EXPOSE 8080
+```
 ---
 
 
