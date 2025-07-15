@@ -131,7 +131,7 @@ and the files contain:
 ```groovy
 def call() {
     echo "Running unit tests..."
-    sh "pytest tests/"  // لو المشروع Python، غيّره حسب لغتك
+    sh "pytest tests/" 
 }
 ```
 
@@ -140,7 +140,7 @@ def call() {
 ```groovy
 def call() {
     echo "Building application..."
-    sh "python setup.py build"  // أو mvn clean install لو Java
+    sh "python setup.py build"  
 }
 ```
 #### 🐳 buildImage.groovy
@@ -155,7 +155,7 @@ def call() {
 ```groovy
 def call() {
     echo "Scanning Docker image..."
-    sh "trivy image your-image-name:latest"  // أو snyk أو غيره
+    sh "trivy image your-image-name:latest"  
 }
 ```
 
