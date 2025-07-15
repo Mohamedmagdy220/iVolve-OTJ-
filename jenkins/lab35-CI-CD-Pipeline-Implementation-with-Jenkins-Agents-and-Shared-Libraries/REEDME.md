@@ -150,6 +150,13 @@ sudo apt update && sudo apt install git docker.io maven -y
 sudo usermod -aG docker <agent-user>
 sudo reboot
 ```
+and you must have `kubectl` on agent you can install it with this command:
+```bash
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version --client
+```
 
 ### 🔹 Step 3: Create Shared Library Repo Structure
 ```bash
