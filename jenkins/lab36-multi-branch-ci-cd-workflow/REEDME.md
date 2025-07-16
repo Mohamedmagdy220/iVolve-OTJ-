@@ -90,11 +90,6 @@ sudo chmod 777 /home/jenkins_home
 - Add: `SSH Username with private key`
 - Username: `magdy`
 - Private key: `Paste content of private key`
-
-### 5- Setup DockerHub Credentials in Jenkins 
-- Go to: `Manage Jenkins > Credentials > Global`
-- Add: `Username with password`
-- ID: `docker-hub-creds`
   
 ![credentials](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab35-CI-CD-Pipeline-Implementation-with-Jenkins-Agents-and-Shared-Libraries/images/two%20credentials%20.png)
 ---
