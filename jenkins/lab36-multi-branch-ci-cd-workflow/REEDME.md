@@ -330,16 +330,12 @@ the Branch `stag` :
 
 you can run in your terminal these commands to see that :
 ```bash
-kubectl get pods
-kubectl get deployments
-kubectl get rs
+kubectl get pods -n main
+kubectl get pods -n dev
+kubectl get pods -n stag
 ```
 
-![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab36-multi-branch-ci-cd-workflow/images/get%20pods.png)
----
-![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab36-multi-branch-ci-cd-workflow/images/get%20deploy.png)
----
-![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab36-multi-branch-ci-cd-workflow/images/get%20replicaset.png)
+![image](https://github.com/Mohamedmagdy220/iVolve-OTJ-/blob/main/jenkins/lab36-multi-branch-ci-cd-workflow/images/all%20pods%20in%20name%20spaces.png)
 ---
 
 And you can see my image in docker hub by click here :
